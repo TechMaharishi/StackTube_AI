@@ -1,0 +1,16 @@
+Instead of relying on keyword searches, process natural language queries (e.g., "Find me the best tech tutorials from last year").
+Use Gemini AI to rephrase and improve search queries before sending them to YouTube API.
+AI Video Summarization
+
+
+Software Engineer
+Web Developer
+Mobile Developer
+Cyber Security Specialist
+AI Engineer
+Data Scientist
+Cloud Engineer
+DevOps Engineer
+Game Developer
+Network Engineer
+
