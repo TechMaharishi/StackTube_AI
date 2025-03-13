@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
     element: <AppSidebar />,
     children: [
       {
-        path: "software-engineer",
+        path: "software_engineer",
         element: withSuspense(SoftwareEngineer),
       },
       {

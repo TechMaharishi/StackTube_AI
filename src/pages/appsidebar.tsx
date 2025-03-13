@@ -33,7 +33,7 @@ import {
 import { Outlet, useLocation } from 'react-router-dom'
 
 const softwareDevItems = [
-  { path: '/software-engineer', label: 'Software Engineer', icon: <CodeBracketIcon className="w-5 h-5" /> },
+  { path: '/software_engineer', label: 'Software Engineer', icon: <CodeBracketIcon className="w-5 h-5" /> },
   { path: '/web_developer', label: 'Web Developer', icon: <GlobeAltIcon className="w-5 h-5" /> },
   { path: '/mobile_developer', label: 'Mobile Developer', icon: <DevicePhoneMobileIcon className="w-5 h-5" /> },
   { path: '/cyber_security_specialist', label: 'Cyber Security Specialist', icon: <ShieldIcon className="w-5 h-5" /> },
