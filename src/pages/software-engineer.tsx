@@ -1,5 +1,6 @@
 // import { useShowVideos } from '@/hooks/useShowVideos';
 // import { useSearchVideo } from '@/hooks/useSearchVideo';
+// import { VideoCard } from '@/components/ui/videocard';
 
 export default function SoftwareEngineer() {
   // const { data, isLoading } = useShowVideos();
@@ -9,6 +10,7 @@ export default function SoftwareEngineer() {
   return (
     <>
     <h1 className="text-red-900">Software Engineer</h1>
+    {/* <VideoCard /> */}
     </>
   )
 }
