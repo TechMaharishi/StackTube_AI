@@ -1,6 +1,7 @@
 // import { useShowVideos } from '@/hooks/useShowVideos';
 // import { useSearchVideo } from '@/hooks/useSearchVideo';
 // import { RecommendedCard } from '@/components/ui/recommended-card';
+// import { Video } from '@/components/ui/video';
 
 export default function SoftwareEngineer() {
   // const { data, isLoading } = useShowVideos();
@@ -18,6 +19,7 @@ export default function SoftwareEngineer() {
       uploadTime="2 weeks ago"
       channelAvatarUrl="https://yt3.googleusercontent.com/ytc/123456789"
     /> */}
+    {/* <Video /> */}
     </>
   )
 }
