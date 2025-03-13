@@ -1,6 +1,6 @@
 // import { useShowVideos } from '@/hooks/useShowVideos';
 // import { useSearchVideo } from '@/hooks/useSearchVideo';
-// import { VideoCard } from '@/components/ui/videocard';
+// import { RecommendedCard } from '@/components/ui/recommended-card';
 
 export default function SoftwareEngineer() {
   // const { data, isLoading } = useShowVideos();
@@ -10,7 +10,14 @@ export default function SoftwareEngineer() {
   return (
     <>
     <h1 className="text-red-900">Software Engineer</h1>
-    {/* <VideoCard /> */}
+    {/* <RecommendedCard
+      thumbnailUrl="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      title="Learn Software Engineering in 2024 - Complete Roadmap"
+      channelName="TechMaster Pro"
+      views="1.2M"
+      uploadTime="2 weeks ago"
+      channelAvatarUrl="https://yt3.googleusercontent.com/ytc/123456789"
+    /> */}
     </>
   )
 }
