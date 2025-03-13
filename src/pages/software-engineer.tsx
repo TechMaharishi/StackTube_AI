@@ -1,7 +1,10 @@
-// import { useSearch } from '@/hooks/useSearch';
+// import { useShowVideos } from '@/hooks/useShowVideos';
+// import { useSearchVideo } from '@/hooks/useSearchVideo';
 
 export default function SoftwareEngineer() {
-  // const { data, isLoading } = useSearch();
+  // const { data, isLoading } = useShowVideos();
+  // const { data, isLoading } = useSearchVideo("learn Go");
+  // console.log(data, isLoading);
   // console.log(data, isLoading);
   return (
     <>
