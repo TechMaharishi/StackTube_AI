@@ -9,15 +9,13 @@ export function ThumbnailCard({
   thumbnailUrl,
   title,
   channelName,
-  views,
-  uploadTime,
+  // uploadTime,
   channelAvatarUrl,
   ...props
 }: {
   thumbnailUrl: string;
   title: string;
   channelName: string;
-  views: string;
   uploadTime: string;
   className?: string;
   channelAvatarUrl?: string;
@@ -48,10 +46,6 @@ export function ThumbnailCard({
             </Link>
           </Text>
         </div>
-
-        <Text>
-          {views} views • {uploadTime}
-        </Text>
       </div>
     </div>
   );

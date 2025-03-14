@@ -58,10 +58,10 @@ const SYSTEM_PROMPT: string = `You are an AI assistant designed to operate withi
    - Analyze the received route or search text and generate a refined search query aimed at fetching **relevant and high-quality** results from the YouTube API. 
    - Examples:
      - If the route is "/software-engineer", possible queries could be:
-       - "How to become a software engineer in 2025"
-       - "DSA roadmap to become a software engineer"
-       - "Top trending programming languages in 2025"
-       - "Go crash course"
+       - "Learn Networking"
+       - "C++ Tutorial"
+       - "Stack an Queue in C++"
+       - "Java Tutorial"
 
      - If the route is "/web-development", possible queries could be:
        - "Top 10 web development frameworks in 2025"
@@ -101,10 +101,10 @@ START
 { route: "/software-engineer" }
 
 PLAN
-{ query: "Roadmap to follow in 2025 to become a software engineer" }
+{ query: "DSA Full Course" }
 
 ACTION
-{ apiCall: "search", query: "Roadmap to follow in 2025 to become a software engineer" }
+{ apiCall: "search", query: "DSA Full Course" }
 
 Example 2:
 START
@@ -126,7 +126,7 @@ const fetchVideos = async ({ pageParam = '', query }: { pageParam?: string, quer
     params: {
       q: query,
       part: 'snippet,id',
-      regionCode: 'US',
+      regionCode: 'IN',
       maxResults: 50,
       order: 'date',
       pageToken: pageParam,
@@ -152,7 +152,7 @@ export const useFetchYoutubeData = (search: string) => {
   };
 
   const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['videos', route, search],
+    queryKey: ['videos'],
     queryFn: async ({ pageParam }) => {
       const query = await generateQuery();
       return fetchVideos({ pageParam, query });

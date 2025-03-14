@@ -1,25 +1,26 @@
-// import { useShowVideos } from '@/hooks/useShowVideos';
-// import { useSearchVideo } from '@/hooks/useSearchVideo';
-// import { RecommendedCard } from '@/components/ui/recommended-card';
-// import { Video } from '@/components/ui/video';
+import { useFetchYoutubeData } from "@/hooks/useFetchYoutubeData";
+import { ThumbnailCard } from "@/components/ui/thumbnail-card";
+import { SearchResultItem } from "@/type";
 
 export default function SoftwareEngineer() {
-  // const { data, isLoading } = useShowVideos();
-  // const { data, isLoading } = useSearchVideo("learn Go");
-  // console.log(data, isLoading);
-  // console.log(data, isLoading);
+  const { data, isLoading } = useFetchYoutubeData("");
+
   return (
-    <>
-    <h1 className="text-red-900">Software Engineer</h1>
-    {/* <RecommendedCard
-      thumbnailUrl="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
-      title="Learn Software Engineering in 2024 - Complete Roadmap"
-      channelName="TechMaster Pro"
-      views="1.2M"
-      uploadTime="2 weeks ago"
-      channelAvatarUrl="https://yt3.googleusercontent.com/ytc/123456789"
-    /> */}
-    {/* <Video /> */}
-    </>
-  )
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        data?.pages?.flatMap(page => page.items).map((item: SearchResultItem) => (
+          <ThumbnailCard
+            key={item.id.videoId}
+            thumbnailUrl={item.snippet.thumbnails.high.url}
+            title={item.snippet.title}
+            channelName={item.snippet.channelTitle}
+            uploadTime={item.snippet.publishedAt}
+            channelAvatarUrl={item.snippet.thumbnails.default.url}
+          />
+        ))
+      )}
+    </div>
+  );
 }
