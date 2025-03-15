@@ -39,6 +39,7 @@ export default function SoftwareEngineer() {
           data?.pages?.flatMap(page => page.items).map((item: SearchResultItem) => (
             <ThumbnailCard
               key={item.id.videoId}
+              videoId={item.id.videoId}
               thumbnailUrl={item.snippet.thumbnails.high.url}
               title={item.snippet.title}
               channelName={item.snippet.channelTitle}

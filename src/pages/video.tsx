@@ -4,7 +4,7 @@ import { Avatar } from '@/components/ui/avatar';
 import { Text, Strong } from '@/components/ui/text';
 import { RecommendedCard } from '@/components/ui/recommended-card';
 
-export function Video() {
+export default function Video() {
   const recommendedVideos = [
     {
       thumbnailUrl: 'https://via.placeholder.com/150',

@@ -9,7 +9,7 @@ export function ThumbnailCard({
   thumbnailUrl,
   title,
   channelName,
-  // uploadTime,
+  videoId,
   channelAvatarUrl,
   ...props
 }: {
@@ -19,34 +19,30 @@ export function ThumbnailCard({
   uploadTime: string;
   className?: string;
   channelAvatarUrl?: string;
+  videoId: string;
 } & React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div {...props} className={clsx('w-full max-w-80 overflow-hidden rounded-lg dark:bg-zinc-950/50 bg-zinc-100 shadow-sm')}>
-      <Link href="#" className="block">
+      <Link href={`/watch/${videoId}`} className="block">
         <img
           src={thumbnailUrl}
           alt={title}
           className="w-full h-48 object-cover"
         />
-      </Link>
-      <Divider />
-
-      <div className="p-2">
-        <Link href="#" className="block">
+        <Divider />
+        <div className="p-2">
           <Strong>
             {title}
           </Strong>
-        </Link>
 
-        <div className="mt-2 flex items-center gap-3">
-          <Avatar className="size-8" src={channelAvatarUrl} />
-          <Text>
-            <Link href="#" className="hover:text-zinc-900 dark:hover:text-white">
+          <div className="mt-2 flex items-center gap-3">
+            <Avatar className="size-8" src={channelAvatarUrl} />
+            <Text>
               {channelName}
-            </Link>
-          </Text>
+            </Text>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

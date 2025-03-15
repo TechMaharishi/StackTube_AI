@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AppSidebar } from "@/pages/appsidebar";
-import { lazy, Suspense }  from "react";
+import { lazy, Suspense } from "react";
 import { Loading } from "@/components/ui/loading";
 
 const SoftwareEngineer = lazy(() => import("./pages/software-engineer"));
@@ -13,6 +13,7 @@ const CloudEngineer = lazy(() => import("./pages/cloud-engineer"));
 const DevOpsEngineer = lazy(() => import("./pages/devops-engineer"));
 const GameDeveloper = lazy(() => import("./pages/game-developer"));
 const NetworkEngineer = lazy(() => import("./pages/network-engineer"));
+const Video = lazy(() => import("./pages/video"));
 
 
 const withSuspense = (Component: React.ComponentType) => (
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
         path: "network_engineer",
         element: withSuspense(NetworkEngineer),
       },
+      {
+        path: "/watch/:videoId",
+        element: withSuspense(Video)
+      }
     ],
   },
 ]);
