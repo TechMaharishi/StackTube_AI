@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 const apiKey = import.meta.env.VITE_GOOGLE_GEMINI_KEY;
-const youtubeApiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 async function generatePrompt(prompt: string): Promise<string> {
   try {
@@ -91,7 +90,7 @@ const fetchVideos = async ({ pageParam = '', query }: { pageParam?: string, quer
       pageToken: pageParam,
     },
     headers: {
-      'x-rapidapi-key': youtubeApiKey,
+      'x-rapidapi-key': apiKey,
       'x-rapidapi-host': 'youtube-v31.p.rapidapi.com',
     },
   };

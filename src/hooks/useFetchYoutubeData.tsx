@@ -2,9 +2,9 @@ import { GoogleGenerativeAI, GenerationConfig, ChatSession } from '@google/gener
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { getNextYoutubeApiKey } from '@/utils/utils';
 
 const apiKey = import.meta.env.VITE_GOOGLE_GEMINI_KEY;
-const youtubeApiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 const fallbacks = {
   software_engineer: "Learn DSA (Data Structure and Algorithm)",
@@ -132,7 +132,7 @@ const fetchVideos = async ({ pageParam = '', query }: { pageParam?: string, quer
       pageToken: pageParam,
     },
     headers: {
-      'x-rapidapi-key': youtubeApiKey,
+      'x-rapidapi-key': getNextYoutubeApiKey(),
       'x-rapidapi-host': 'youtube-v31.p.rapidapi.com',
     },
   };
