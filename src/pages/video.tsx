@@ -3,8 +3,12 @@ import { Link } from '@/components/ui/link';
 import { Avatar } from '@/components/ui/avatar';
 import { Text, Strong } from '@/components/ui/text';
 import { RecommendedCard } from '@/components/ui/recommended-card';
+import { useFetchVideoData } from '@/hooks/useFetchVideoData';
+
 
 export default function Video() {
+  const { data: video } = useFetchVideoData();
+  console.log(video)
   const recommendedVideos = [
     {
       thumbnailUrl: 'https://via.placeholder.com/150',
