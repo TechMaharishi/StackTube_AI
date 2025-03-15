@@ -4,11 +4,16 @@ import { Avatar } from '@/components/ui/avatar';
 import { Text, Strong } from '@/components/ui/text';
 import { RecommendedCard } from '@/components/ui/recommended-card';
 import { useFetchVideoData } from '@/hooks/useFetchVideoData';
+import { useFetchRecommendedData } from '@/hooks/useFetchRecommendedData';
 
 
 export default function Video() {
   const { data: video } = useFetchVideoData();
-  console.log(video)
+  const { data: recommendedVideosData } = useFetchRecommendedData();
+  
+  console.log(recommendedVideosData);
+  console.log(video);
+  
   const recommendedVideos = [
     {
       thumbnailUrl: 'https://via.placeholder.com/150',
