@@ -152,7 +152,7 @@ export const useFetchYoutubeData = (search: string) => {
   };
 
   const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['videos'],
+    queryKey: ['videos', search, route],
     queryFn: async ({ pageParam }) => {
       const query = await generateQuery();
       return fetchVideos({ pageParam, query });

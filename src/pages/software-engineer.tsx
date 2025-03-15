@@ -5,13 +5,18 @@ import { Loading } from "@/components/ui/loading";
 import { Strong, Text } from "@/components/ui/text";
 import { Divider } from "@/components/ui/divider";
 import { SearchBar } from "@/components/ui/searchbar";
+import { useState } from "react";
 
 export default function SoftwareEngineer() {
+
+  const [query, setQuery] = useState("" as string);
+
+
   const handleSearch = (query: string) => {
-    console.log('Search query:', query);
+    setQuery(query);
   };
 
-  const { data, isLoading } = useFetchYoutubeData("");
+  const { data, isLoading } = useFetchYoutubeData(query);
 
   return (
     <div className="container mx-auto p-6">
