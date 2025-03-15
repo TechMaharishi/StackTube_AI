@@ -8,18 +8,18 @@ export function RecommendedCard({
   thumbnailUrl,
   title,
   channelName,
-  views,
   uploadTime,
   channelAvatarUrl,
+  relatedToVideoId,
   ...props
 }: {
   thumbnailUrl: string;
   title: string;
   channelName: string;
-  views: string;
   uploadTime: string;
   className?: string;
   channelAvatarUrl?: string;
+  relatedToVideoId?: string;
 } & React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
@@ -49,9 +49,9 @@ export function RecommendedCard({
             </Text>
           </div>
 
-          <Text>
+          {/* <Text>
             {views} views • {uploadTime}
-          </Text>
+          </Text> */}
         </div>
       </Link>
     </div>

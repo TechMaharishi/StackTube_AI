@@ -8,9 +8,9 @@ const fetchVideo = async (videoId: string) => {
   const options = {
     method: 'GET',
     params: {
-      type: 'video',
-      part: 'id,snippet',
       relatedToVideoId: videoId,
+      part: 'id,snippet',
+      type: 'video',      
       maxResults: '50'
     },
     headers: {
@@ -27,8 +27,8 @@ export const useFetchRecommendedData = () => {
 
   const { data, isLoading } = useQuery({
     queryKey: ['video', videoId],
-    queryFn: () => fetchVideo(videoId!),
-    enabled: !!videoId,
+    queryFn: () => fetchVideo("q_HIUIY3a7k"),
+    // enabled: !!videoId,
   });
 
   return {

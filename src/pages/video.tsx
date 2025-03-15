@@ -1,44 +1,47 @@
 import clsx from 'clsx';
 import { Avatar } from '@/components/ui/avatar';
 import { Text, Strong } from '@/components/ui/text';
-import { RecommendedCard } from '@/components/ui/recommended-card';
 import { useFetchVideoData } from '@/hooks/useFetchVideoData';
-import { useFetchRecommendedData } from '@/hooks/useFetchRecommendedData';
 import ReactPlayer from 'react-player';
+import { Loading } from '@/components/ui/loading';
+import { useGenerateSummary } from '@/hooks/useGenerateSummery';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function Video() {
   const { data: video, videoId } = useFetchVideoData();
-  const { data: recommendedVideosData } = useFetchRecommendedData();
+  const { summary, loading: isSummaryLoading, } = useGenerateSummary(video? video.items[0].snippet.description: null);
 
-  const recommendedVideos = [
-    {
-      thumbnailUrl: 'https://via.placeholder.com/150',
-      title: 'Recommended Video 1',
-      channelName: 'Channel 1',
-      views: '1M',
-      uploadTime: '1 week ago',
-      channelAvatarUrl: 'https://via.placeholder.com/40',
-    },
-    {
-      thumbnailUrl: 'https://via.placeholder.com/150',
-      title: 'Recommended Video 2',
-      channelName: 'Channel 2',
-      views: '500K',
-      uploadTime: '2 weeks ago',
-      channelAvatarUrl: 'https://via.placeholder.com/40',
-    },
-    {
-      thumbnailUrl: 'https://via.placeholder.com/150',
-      title: 'Recommended Video 3',
-      channelName: 'Channel 3',
-      views: '250K',
-      uploadTime: '3 weeks ago',
-      channelAvatarUrl: 'https://via.placeholder.com/40',
-    },
-  ];
+  console.log(summary)
+
+  const [displayedSummary, setDisplayedSummary] = useState('');
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (summary) {
+      setDisplayedSummary('');
+      controls.start({ opacity: 1 });
+      let currentIndex = 0;
+
+      const interval = setInterval(() => {
+        if (currentIndex < summary.length) {
+          setDisplayedSummary((prev) => prev + summary[currentIndex]);
+          currentIndex++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 20);
+
+      return () => clearInterval(interval);
+    }
+  }, [summary, controls]);
 
   if (!video || !videoId) {
-    return <div>Loading...</div>;
+    return (
+      <div className="col-span-full flex justify-center items-center">
+        <Loading />
+      </div>
+    );
   }
 
   const videoUrl = `https://www.youtube.com/embed/${videoId}`;
@@ -61,31 +64,26 @@ export default function Video() {
           <div className={clsx('flex items-center gap-3 mt-2')}>
             <Avatar className={clsx('size-10')} src={videoDetails.thumbnails.default.url} />
             <Text>
-                {videoDetails.channelTitle}              
+              {videoDetails.channelTitle}
             </Text>
           </div>
           <Text className={clsx('text-sm text-zinc-600 dark:text-zinc-400 mt-2')}>
-            {videoDetails.publishedAt}
+            Published on: {new Date(videoDetails.publishedAt).toLocaleDateString()}
           </Text>
         </div>
-      </div>
 
-      {/* Recommended Videos Section */}
-      <div className={clsx('w-full md:w-80')}>
-        <h2 className={clsx('text-lg font-semibold mb-4')}>Recommended</h2>
-        <div className={clsx('space-y-4')}>
-          {recommendedVideos.map((video, index) => (
-            <RecommendedCard
-              key={index}
-              thumbnailUrl={video.thumbnailUrl}
-              title={video.title}
-              channelName={video.channelName}
-              views={video.views}
-              uploadTime={video.uploadTime}
-              channelAvatarUrl={video.channelAvatarUrl}
-            />
-          ))}
-        </div>
+        <motion.div
+          className={clsx('mt-6 p-4 bg-zinc-100 dark:bg-zinc-900 rounded-lg')}
+          initial={{ opacity: 0 }}
+          animate={controls}
+        >
+          <Text className={clsx('text-zinc-800 dark:text-zinc-200')}>
+            {displayedSummary}
+            {isSummaryLoading && (
+              <span className="ml-1 animate-pulse">|</span>
+            )}
+          </Text>
+        </motion.div>
       </div>
     </div>
   );

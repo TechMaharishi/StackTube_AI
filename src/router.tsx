@@ -3,6 +3,7 @@ import { AppSidebar } from "@/pages/appsidebar";
 import { lazy, Suspense } from "react";
 import { Loading } from "@/components/ui/loading";
 
+const Home = lazy(() => import("./pages/home"));
 const SoftwareEngineer = lazy(() => import("./pages/software-engineer"));
 const WebDeveloper = lazy(() => import("./pages/web-developer"));
 const MobileDeveloper = lazy(() => import("./pages/mobile-developer"));
@@ -15,7 +16,6 @@ const GameDeveloper = lazy(() => import("./pages/game-developer"));
 const NetworkEngineer = lazy(() => import("./pages/network-engineer"));
 const Video = lazy(() => import("./pages/video"));
 
-
 const withSuspense = (Component: React.ComponentType) => (
   <Suspense fallback={<Loading />}>
     <Component />
@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
     path: "/",
     element: <AppSidebar />,
     children: [
+      {
+        index: true,
+        element: withSuspense(Home),
+      },
       {
         path: "software_engineer",
         element: withSuspense(SoftwareEngineer),
