@@ -1,19 +1,15 @@
 import clsx from 'clsx';
-import { Link } from '@/components/ui/link';
 import { Avatar } from '@/components/ui/avatar';
 import { Text, Strong } from '@/components/ui/text';
 import { RecommendedCard } from '@/components/ui/recommended-card';
 import { useFetchVideoData } from '@/hooks/useFetchVideoData';
 import { useFetchRecommendedData } from '@/hooks/useFetchRecommendedData';
-
+import ReactPlayer from 'react-player';
 
 export default function Video() {
-  const { data: video } = useFetchVideoData();
+  const { data: video, videoId } = useFetchVideoData();
   const { data: recommendedVideosData } = useFetchRecommendedData();
-  
-  console.log(recommendedVideosData);
-  console.log(video);
-  
+
   const recommendedVideos = [
     {
       thumbnailUrl: 'https://via.placeholder.com/150',
@@ -41,33 +37,35 @@ export default function Video() {
     },
   ];
 
+  if (!video || !videoId) {
+    return <div>Loading...</div>;
+  }
+
+  const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+  const videoDetails = video.items[0].snippet;
+
   return (
     <div className={clsx('flex flex-col md:flex-row gap-6 p-4')}>
       <div className={clsx('flex-grow')}>
         <div className={clsx('w-full h-96 bg-zinc-200 dark:bg-zinc-800 rounded-lg overflow-hidden')}>
-          <iframe
+          <ReactPlayer
+            url={videoUrl}
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+            controls
+          />
         </div>
 
         <div className={clsx('mt-4')}>
-          <Strong className={clsx('text-xl')}>Main Video Title</Strong>
+          <Strong className={clsx('text-xl')}>{videoDetails.title}</Strong>
           <div className={clsx('flex items-center gap-3 mt-2')}>
-            <Avatar className={clsx('size-10')} src="https://via.placeholder.com/40" />
+            <Avatar className={clsx('size-10')} src={videoDetails.thumbnails.default.url} />
             <Text>
-              <Link href="#" className="hover:text-zinc-900 dark:hover:text-white">
-                Channel Name
-              </Link>
+                {videoDetails.channelTitle}              
             </Text>
           </div>
           <Text className={clsx('text-sm text-zinc-600 dark:text-zinc-400 mt-2')}>
-            1M views • 1 week ago
+            {videoDetails.publishedAt}
           </Text>
         </div>
       </div>

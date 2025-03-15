@@ -32,5 +32,6 @@ export const useFetchVideoData = () => {
   return {
     data,
     isLoading,
+    videoId,
   };
 };

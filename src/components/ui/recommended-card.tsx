@@ -35,26 +35,25 @@ export function RecommendedCard({
           alt={title}
           className="w-32 h-20 object-cover rounded-lg"
         />
-      </Link>
 
-      <div className="flex flex-col justify-between flex-grow">
-        <Link href="#">
+
+        <div className="flex flex-col justify-between flex-grow">
           <Strong className="line-clamp-2 text-sm">{title}</Strong>
-        </Link>
 
-        <div className="mt-1 flex items-center gap-2">
-          {channelAvatarUrl && (
-            <Avatar className="size-5" src={channelAvatarUrl} />
-          )}
+          <div className="mt-1 flex items-center gap-2">
+            {channelAvatarUrl && (
+              <Avatar className="size-5" src={channelAvatarUrl} />
+            )}
+            <Text>
+              {channelName}
+            </Text>
+          </div>
+
           <Text>
-            {channelName}
+            {views} views • {uploadTime}
           </Text>
         </div>
-
-        <Text>
-          {views} views • {uploadTime}
-        </Text>
-      </div>
+      </Link>
     </div>
   );
 }

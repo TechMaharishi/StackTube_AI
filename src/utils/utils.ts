@@ -1,6 +1,7 @@
 const vidKeys = [
   // import.meta.env.VITE_YOUTUBE_API_KEY1,
   import.meta.env.VITE_YOUTUBE_API_KEY2,
+  import.meta.env.VITE_YOUTUBE_API_KEY3,
   import.meta.env.VITE_YOUTUBE_API_KEY4,
   import.meta.env.VITE_YOUTUBE_API_KEY5,
 ];
