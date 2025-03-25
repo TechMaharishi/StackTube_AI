@@ -3,6 +3,7 @@ import {
   Dropdown,
   DropdownButton,
 } from '@/components/ui/dropdown'
+import { Logo } from '@/components/Logo'
 import { Navbar, NavbarItem, NavbarSection, NavbarSpacer } from '@/components/ui/navbar'
 import {
   Sidebar,
@@ -54,10 +55,10 @@ export function AppSidebar() {
         <Navbar>
           <NavbarSpacer />
           <NavbarSection>
-            <NavbarItem  aria-label="Search">
+            <NavbarItem aria-label="Search">
               <MagnifyingGlassIcon />
             </NavbarItem>
-            <NavbarItem  aria-label="Inbox">
+            <NavbarItem aria-label="Inbox">
               <InboxIcon />
             </NavbarItem>
             <Dropdown>
@@ -71,13 +72,13 @@ export function AppSidebar() {
       sidebar={
         <Sidebar>
           <SidebarHeader>
-            <img src="/logo.png" alt="Logo" className="h-12 w-auto mx-auto" />
+            <Logo />
           </SidebarHeader>
           <SidebarBody>
             <SidebarSection>
               <SidebarHeading>Software Dev. & Eng.</SidebarHeading>
               {softwareDevItems.map((item) => (
-                <SidebarItem 
+                <SidebarItem
                   key={item.path}
                   current={pathname.startsWith(item.path)}
                   href={item.path}
@@ -89,7 +90,7 @@ export function AppSidebar() {
             </SidebarSection>
             <SidebarSpacer />
             <SidebarSection>
-              <SidebarItem 
+              <SidebarItem
                 current={pathname.startsWith("/lms-features")}
                 href="/lms-features"
               >
@@ -101,7 +102,7 @@ export function AppSidebar() {
         </Sidebar>
       }
     >
-      <Outlet/>
+      <Outlet />
     </SidebarLayout>
   )
 }
