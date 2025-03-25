@@ -1,10 +1,4 @@
-import { Avatar } from '@/components/ui/avatar'
-import {
-  Dropdown,
-  DropdownButton,
-} from '@/components/ui/dropdown'
 import { Logo } from '@/components/Logo'
-import { Navbar, NavbarItem, NavbarSection, NavbarSpacer } from '@/components/ui/navbar'
 import {
   Sidebar,
   SidebarBody,
@@ -17,8 +11,6 @@ import {
 } from '@/components/ui/sidebar'
 import { SidebarLayout } from '@/components/ui/sidebar-layout'
 import {
-  InboxIcon,
-  MagnifyingGlassIcon,
   SparklesIcon,
   CodeBracketIcon,
   GlobeAltIcon,
@@ -52,22 +44,7 @@ export function AppSidebar() {
   return (
     <SidebarLayout
       navbar={
-        <Navbar>
-          <NavbarSpacer />
-          <NavbarSection>
-            <NavbarItem aria-label="Search">
-              <MagnifyingGlassIcon />
-            </NavbarItem>
-            <NavbarItem aria-label="Inbox">
-              <InboxIcon />
-            </NavbarItem>
-            <Dropdown>
-              <DropdownButton as={NavbarItem}>
-                <Avatar src="/profile-photo.jpg" square />
-              </DropdownButton>
-            </Dropdown>
-          </NavbarSection>
-        </Navbar>
+        <></>
       }
       sidebar={
         <Sidebar>
