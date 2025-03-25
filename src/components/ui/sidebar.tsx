@@ -114,7 +114,7 @@ export const SidebarItem = forwardRef(function SidebarItem(
         />
       )}
       {'href' in props ? (
-        <Headless.CloseButton
+        <Headless.Button
           as={Link}
           {...props}
           className={classes}
@@ -122,7 +122,7 @@ export const SidebarItem = forwardRef(function SidebarItem(
           ref={ref}
         >
           <TouchTarget>{children}</TouchTarget>
-        </Headless.CloseButton>
+        </Headless.Button>
       ) : (
         <Headless.Button
           {...props}

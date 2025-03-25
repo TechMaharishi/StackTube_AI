@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { AppSidebar } from "@/pages/appsidebar";
 import { lazy, Suspense } from "react";
 import { Loading } from "@/components/ui/loading";
@@ -24,7 +24,7 @@ const withSuspense = (Component: React.ComponentType) => (
   </Suspense>
 );
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <AppSidebar />,
