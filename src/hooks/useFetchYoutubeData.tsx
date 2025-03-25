@@ -120,7 +120,7 @@ ACTION
 const fetchVideos = async ({ pageParam = '', query }: { pageParam?: string, query: string }) => {
   const url = 'https://youtube-v31.p.rapidapi.com/search';
 
-  console.log(query);
+
 
   const options = {
     params: {

@@ -1,7 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { AppSidebar } from "@/pages/appsidebar";
 import { lazy, Suspense } from "react";
 import { Loading } from "@/components/ui/loading";
+
+const NotFound = lazy(() => import("./pages/not-found"));
 
 const Home = lazy(() => import("./pages/home"));
 const SoftwareEngineer = lazy(() => import("./pages/software-engineer"));
@@ -22,7 +24,7 @@ const withSuspense = (Component: React.ComponentType) => (
   </Suspense>
 );
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <AppSidebar />,
@@ -74,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: "/watch/:videoId",
         element: withSuspense(Video)
+      },
+      {
+        path: "*",
+        element: withSuspense(NotFound)
       }
     ],
   },

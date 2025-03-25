@@ -10,9 +10,9 @@ import { useEffect, useState } from 'react';
 
 export default function Video() {
   const { data: video, videoId } = useFetchVideoData();
-  const { summary, loading: isSummaryLoading, } = useGenerateSummary(video? video.items[0].snippet.description: null);
+  const { summary, loading: isSummaryLoading, } = useGenerateSummary(video ? video.items[0].snippet.description : null);
 
-  console.log(summary)
+
 
   const [displayedSummary, setDisplayedSummary] = useState('');
   const controls = useAnimation();
